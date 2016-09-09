@@ -11,7 +11,7 @@
 	最小公倍数=两整数的乘积÷最大公约数
 */
 
-/* 辗转相除法
+/* 辗转相除法(非递归)
 有两整数a和b：
 	1 a%b得余数c;
 	2 若c=0，则b即为两数的最大公约数;
@@ -28,6 +28,20 @@ int GCDMethod1(int a, int b)
 		c = a%b;
 	}
 	return b;
+}
+
+/* 辗转相除法(递归实现)*/
+int GCDMethodRec1(int a, int b)
+{
+	if(0==b)
+		return a;
+	return GCDMethodRec1(b, a%b);
+}
+
+/* 辗转相除法(递归实现)*/
+int GCDMethodRec2(int a, int b)
+{
+	return b ? GCDMethodRec1(b, a%b) : a;
 }
 
 /* 更相减损法
